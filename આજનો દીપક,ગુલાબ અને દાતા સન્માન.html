@@ -1,0 +1,1068 @@
+<!DOCTYPE html>
+<html lang="gu">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>શાળા સર્વગ્રાહી સન્માન અને શુભેચ્છા પોસ્ટર મેકર</title>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+Gujarati:wght@500;600;700;800;900&family=Montserrat:wght@800;900&display=swap" rel="stylesheet">
+
+<style>
+*{box-sizing:border-box}
+:root{
+  --primary-color:#096827;
+  --secondary-color:#034818;
+  --ribbon-grad:linear-gradient(180deg,#c15c08,#78350f);
+  --ribbon-border:#fde047;
+  --gold:#eab308;
+  --gold2:#facc15;
+  --ink:#172033;
+  --pill-grad:linear-gradient(180deg,#096827,#034818);
+  --badge-shadow:rgba(4,75,28,.35);
+  --canvas-bg:radial-gradient(circle at 50% 38%, #fffbeb 0%, #fef08a 35%, #facc15 70%, #ca8a04 100%);
+  --bday-bar-bg:linear-gradient(180deg,#c2410c 0%,#9a3412 50%,#7c2d12 100%);
+  --bday-bar-border:#facc15;
+  --name-color:#713f12;
+}
+
+/* ૧. ગુલાબ મોડ (રોયલ પિંક) */
+body.mode-gulab{
+  --primary-color:#db2777;
+  --secondary-color:#9d174d;
+  --ribbon-grad:linear-gradient(180deg,#be185d,#831843);
+  --ribbon-border:#fbcfe8;
+  --pill-grad:linear-gradient(180deg,#ec4899,#be185d);
+  --badge-shadow:rgba(219,39,119,.35);
+  --canvas-bg:radial-gradient(circle at 50% 38%, #ffffff 0%, #fdf2f8 35%, #f472b6 70%, #db2777 100%);
+  --bday-bar-bg:linear-gradient(180deg,#ec4899 0%,#db2777 50%,#9d174d 100%);
+  --bday-bar-border:#fbcfe8;
+  --name-color:#831843;
+}
+
+/* ૨. દાતા સન્માન મોડ (રોયલ કેસરી / ગોલ્ડન સેફ્રોન) */
+body.mode-donor{
+  --primary-color:#c2410c;
+  --secondary-color:#7c2d12;
+  --ribbon-grad:linear-gradient(180deg,#b45309,#78350f);
+  --ribbon-border:#fef08a;
+  --pill-grad:linear-gradient(180deg,#ea580c,#9a3412);
+  --badge-shadow:rgba(194,65,12,.4);
+  --canvas-bg:radial-gradient(circle at 50% 38%, #fffbeb 0%, #fed7aa 35%, #f97316 72%, #9a3412 100%);
+  --bday-bar-bg:linear-gradient(180deg,#d97706 0%,#b45309 50%,#78350f 100%);
+  --bday-bar-border:#fef08a;
+  --name-color:#7c2d12;
+}
+
+html,body{margin:0;padding:0}
+body{background:#1e293b;color:var(--ink);font-family:'Noto Sans Gujarati',sans-serif}
+button,input,select{font-family:inherit}
+.admin-card{width:min(920px,96%);margin:18px auto;background:#fff;border-radius:18px;padding:20px;box-shadow:0 16px 38px rgba(0,0,0,.28)}
+.dash-title{text-align:center;font-size:22px;font-weight:900;color:#1e293b;margin:0}
+.dash-desc{text-align:center;color:#64748b;font-size:13px;margin:5px 0 16px}
+
+/* ૩ મોડ સિલેક્ટર બટન્સ */
+.mode-switch-row{display:flex;gap:10px;margin-bottom:18px;justify-content:center;flex-wrap:wrap}
+.mode-btn{
+  flex:1 1 240px;max-width:280px;padding:11px 12px;border:2.5px solid #cbd5e1;border-radius:12px;
+  background:#f8fafc;font-size:13.5px;font-weight:900;cursor:pointer;display:flex;
+  align-items:center;justify-content:center;gap:6px;transition:all .2s ease;
+}
+.mode-btn.active-deepak{background:#f0fdf4;border-color:#16a34a;color:#166534;box-shadow:0 4px 12px rgba(22,163,74,.2)}
+.mode-btn.active-gulab{background:#fdf2f8;border-color:#ec4899;color:#9d174d;box-shadow:0 4px 12px rgba(236,72,153,.2)}
+.mode-btn.active-donor{background:#fff7ed;border-color:#ea580c;color:#9a3412;box-shadow:0 4px 12px rgba(234,88,12,.2)}
+
+.section-title{grid-column:1/-1;margin:5px 0 -2px;padding:8px 11px;border-radius:9px;background:#f8fafc;color:#1e293b;font-size:14px;font-weight:900;border-left:4px solid var(--gold)}
+.form-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(245px,1fr));gap:11px}
+.input-group{display:flex;flex-direction:column;gap:5px;background:#f8fafc;padding:10px 11px;border:1px solid #e2e8f0;border-radius:10px}
+.input-group label{font-size:12px;font-weight:900;color:#334155}
+.input-group input,.input-group select{width:100%;padding:9px 10px;border:1.5px solid #cbd5e1;border-radius:7px;outline:0;font-size:13px;background:#fff}
+.btn-row{display:flex;gap:7px}
+.btn-upload{flex:1;border:0;border-radius:7px;padding:8px;background:#e2e8f0;color:#334155;font-size:12px;font-weight:900;cursor:pointer}
+.btn-upload.primary{background:#0284c7;color:#fff}
+.btn-upload.danger{background:#ef4444;color:#fff}
+.slider-row{display:flex;align-items:center;gap:9px}
+.slider-row input{flex:1}
+.slider-row span{min-width:44px;text-align:right;font-size:12px;font-weight:900;color:#475569}
+.main-actions{display:flex;flex-wrap:wrap;justify-content:center;gap:9px;margin-top:16px}
+.main-actions button{border:0;border-radius:9px;padding:11px 17px;color:#fff;font-size:13px;font-weight:900;cursor:pointer}
+#btnShare{background:#16a34a} #btnDownload{background:#b45309} #btnDownloadPng{background:#7c3aed}
+#btnPrint{background:#0284c7} #btnSaveMeta{background:#475569} #btnReset{background:#64748b}
+.toast-msg{text-align:center;color:#096827;font-size:12px;font-weight:900;min-height:20px;margin-top:7px}
+
+/* POSTER CANVAS */
+.poster-container{display:flex;justify-content:center;padding:8px 10px 40px}
+.poster-canvas{
+  position:relative;width:min(540px,100vw);aspect-ratio:9/16;overflow:hidden;
+  background: var(--canvas-bg);
+  border:6px solid #fff;box-shadow:0 20px 50px rgba(0,0,0,.5);isolation:isolate;
+}
+
+.bg-decor{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.poster-canvas > *:not(.bg-decor){position:absolute;z-index:3}
+
+/* TOP SUVICHAR */
+.top-suvichar{
+  top:2.0%;left:5%;right:5%;height:5.6%;background:var(--pill-grad);
+  border:2.5px solid var(--ribbon-border);border-radius:24px;color:#fff;display:flex;align-items:center;
+  justify-content:center;text-align:center;padding:0 12px;font-size:clamp(10px,2.25vw,15px);
+  font-weight:900;line-height:1.2;box-shadow:0 6px 14px rgba(0,0,0,.25)
+}
+
+/* SCHOOL BADGE */
+.school-badge{
+  top:8.6%;left:5.2%;right:5.2%;height:8.9%;background:rgba(255,255,255,.96);
+  border:2.5px solid var(--ribbon-border);border-radius:38px;display:flex;align-items:center;
+  padding:0 13px;gap:11px;box-shadow:0 6px 16px rgba(180,83,9,.2)
+}
+.school-logo-slot{width:14.5%;aspect-ratio:1;border-radius:50%;background:#fff7ed;border:2px solid #ea580c;display:flex;align-items:center;justify-content:center;overflow:hidden;flex-shrink:0}
+.school-logo-slot img{width:100%;height:100%;object-fit:cover}
+.school-meta{flex:1;text-align:center;min-width:0}
+.school-name{color:#111827;font-size:clamp(12px,2.8vw,18px);font-weight:900;line-height:1.2;word-break:break-word}
+.school-place{color:#334155;font-size:clamp(8.5px,1.9vw,12.5px);font-weight:800;margin-top:3px}
+
+/* TITLE CLUSTER */
+.title-cluster{top:18.0%;left:11%;width:78%;text-align:center}
+.deepak-pill{
+  background:var(--pill-grad);border:3px solid var(--ribbon-border);border-radius:42px;
+  color:#fff;font-size:clamp(18px,4.45vw,31px);font-weight:900;padding:5px 17px 7px;
+  box-shadow:0 8px 18px var(--badge-shadow)
+}
+.shubhechha-ribbon{
+  position:relative;margin:6px auto 0;width:86%;background:var(--ribbon-grad);
+  border:2px solid var(--ribbon-border);border-radius:15px;color:#fff;font-size:clamp(10px,2.1vw,14.5px);
+  font-weight:900;padding:4px 9px;box-shadow:0 4px 10px rgba(0,0,0,.35)
+}
+
+/* PHOTO FRAME */
+.student-frame-box{
+  top:31.0%;left:24.5%;width:51%;aspect-ratio:1;border-radius:50%;
+  border:7px solid var(--ribbon-border);background:#fff;
+  box-shadow:0 10px 24px rgba(180,83,9,.35), inset 0 0 0 4px #b45309;
+  overflow:hidden;
+}
+.student-frame-box #studentCanvas{width:100%;height:100%;border-radius:50%;display:block}
+
+/* PERSON NAME & DETAILS */
+.student-name-plate{top:61.2%;left:5%;width:90%;text-align:center}
+.student-name{
+  margin:0;color:var(--name-color);font-size:clamp(14px,3.4vw,23px);font-weight:900;
+  line-height:1.15;text-shadow:0 2px 4px #fff, 0 1px 1px #fff;word-break:break-word
+}
+.details-pill-row{display:flex;justify-content:center;gap:7px;margin-top:5px;flex-wrap:wrap}
+.detail-chip{
+  background:rgba(255,251,235,.98);border:1.8px solid #d97706;border-radius:22px;
+  padding:3px 13px;font-size:clamp(9.5px,2.05vw,13px);font-weight:800;color:#9a3412;
+  box-shadow:0 3px 6px rgba(217,119,6,.18)
+}
+body.mode-gulab .detail-chip{background:#fff;border-color:#ec4899;color:#9d174d}
+body.mode-donor .detail-chip{background:#fff;border-color:#ea580c;color:#9a3412}
+
+/* 3D GOLDEN TEXT BARS / DONOR APPRECIATION STRIP */
+.birthday-block{
+  top:70.2%;left:6%;right:6%;display:flex;flex-direction:column;gap:5px;justify-content:center
+}
+.bday-bar{
+  height:36px;border-radius:10px;
+  background:var(--bday-bar-bg);
+  border:2px solid var(--bday-bar-border);box-shadow:0 5px 12px rgba(0,0,0,.35);
+  display:flex;align-items:center;justify-content:center;padding:0 8px;
+}
+body.mode-donor .bday-bar{
+  height:auto;min-height:40px;padding:6px 12px;
+}
+.bday-svg-text{width:100%;height:100%;display:block}
+.donor-msg-text{
+  display:none;
+  color:#fff;
+  font-size:clamp(9.5px,2.25vw,13.5px);
+  font-weight:900;
+  text-align:center;
+  line-height:1.3;
+  text-shadow:0 1px 3px rgba(0,0,0,.7);
+}
+body.mode-donor .bday-svg-text{display:none}
+body.mode-donor .donor-msg-text{display:block}
+
+/* CELEBRATION DECORATION */
+.celebration-row{
+  top:79.6%;left:2%;right:2%;height:13%;display:flex;align-items:flex-end;
+  justify-content:space-between;pointer-events:none;
+}
+.bouquet-cluster{width:32%;height:100%;display:flex;align-items:flex-end;justify-content:center}
+.bouquet-cluster svg{width:100%;height:100%;filter:drop-shadow(0 8px 12px rgba(0,0,0,.32))}
+.bouquet-cluster.right{transform:scaleX(-1)}
+.center-decor{width:34%;height:100%;display:flex;align-items:flex-end;justify-content:center}
+.center-decor svg{width:100%;height:100%;filter:drop-shadow(0 10px 18px rgba(0,0,0,.4))}
+
+/* FOOTER SLOGAN */
+.bottom-slogan-bar{
+  bottom:1.8%;left:5%;right:5%;height:4.8%;background:var(--pill-grad);
+  border:2.5px solid var(--ribbon-border);border-radius:15px;color:#fff;display:flex;align-items:center;
+  justify-content:center;text-align:center;font-size:clamp(9.5px,2.2vw,14px);font-weight:900;
+  box-shadow:0 4px 10px rgba(0,0,0,.25)
+}
+
+/* CAMERA MODAL */
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.86);z-index:9999;align-items:center;justify-content:center;padding:15px}
+.camera-box{background:#fff;width:min(440px,96%);border-radius:14px;overflow:hidden}
+.camera-header{padding:10px 14px;font-weight:900;display:flex;justify-content:space-between;align-items:center;background:#f8fafc;border-bottom:1px solid #e2e8f0}
+.camera-viewport{position:relative;aspect-ratio:1;background:#000;overflow:hidden}
+.camera-viewport video{width:100%;height:100%;object-fit:cover}
+.camera-guide{position:absolute;width:76%;aspect-ratio:1;inset:0;margin:auto;border:3px dashed #facc15;border-radius:50%;box-shadow:0 0 0 9999px rgba(0,0,0,.45);pointer-events:none}
+.camera-actions{display:flex;gap:8px;padding:12px;background:#f8fafc}
+
+@media print{.admin-card,.modal-overlay{display:none!important}body{background:transparent}.poster-container{padding:0}.poster-canvas{width:100vw;height:177.777vw;border:0;box-shadow:none}}
+</style>
+</head>
+<body>
+
+<div class="admin-card">
+  <h1 class="dash-title">શાળા સર્વગ્રાહી સન્માન અને શુભેચ્છા પોસ્ટર મેકર</h1>
+  <div class="dash-desc">જન્મદિવસ, સુઘડ વિદ્યાર્થી કે તિથિ ભોજન દાતાશ્રી માટે નીચેથી મોડ પસંદ કરો</div>
+
+  <!-- ૩ મોડ સ્વિચ બટન્સ -->
+  <div class="mode-switch-row">
+    <button class="mode-btn active-deepak" id="btnModeDeepak" onclick="switchMode('deepak')">
+      🎂 આજનો દીપક (જન્મદિવસ)
+    </button>
+    <button class="mode-btn" id="btnModeGulab" onclick="switchMode('gulab')">
+      🌹 આજનું ગુલાબ (સુઘડ વિદ્યાર્થી)
+    </button>
+    <button class="mode-btn" id="btnModeDonor" onclick="switchMode('donor')">
+      🙏 તિથિ ભોજન દાતા સન્માન
+    </button>
+  </div>
+
+  <div class="form-grid">
+    <div class="section-title">શાળા વિગતો</div>
+    <div class="input-group"><label>શાળાનું નામ</label><input id="inpSchool" value="શ્રી પાનસડા અનુપમ પ્રાથમિક શાળા"></div>
+    <div class="input-group"><label>સ્થળ (ગામ / તા. / જિ.)</label><input id="inpPlace" value="ગામ: પાનસડા | તા: ધરણીધર | જિ: વાવ-થરાદ"></div>
+
+    <div class="input-group">
+      <label>શાળાનો લોગો</label>
+      <div class="btn-row">
+        <button class="btn-upload" onclick="$('fileLogo').click()">લોગો અપલોડ</button>
+        <button class="btn-upload danger" onclick="clearSchoolLogo()">રીમુવ</button>
+      </div>
+      <input type="file" id="fileLogo" accept="image/*" hidden>
+    </div>
+
+    <div class="section-title" id="secPersonTitle">વિદ્યાર્થી / દાતા વિગતો</div>
+    <div class="input-group"><label id="lblNameInput">વિદ્યાર્થીનું પૂરું નામ</label><input id="inpStudentName" value="રાજપુરા રસુલભાઈ સુલેમાનભાઈ"></div>
+    <div class="input-group"><label id="lblSubInput">ધોરણ અને વર્ગ</label><input id="inpStandard" value="ધોરણ - ૮"></div>
+    <div class="input-group"><label id="lblDateInput">જન્મ તારીખ અને વાર</label><input id="inpDob" value="તા. ૦૬/૦૯/૨૦૧૨, રવિવાર"></div>
+
+    <div class="input-group" style="grid-column:1/-1">
+      <label id="lblPhotoInput">વિદ્યાર્થીનો ફોટો</label>
+      <div class="btn-row">
+        <button class="btn-upload" onclick="$('fileStudent').click()">ગેલેરીમાંથી ફોટો</button>
+        <button class="btn-upload primary" onclick="launchCamera()">લાઈવ કેમેરા</button>
+        <button class="btn-upload danger" onclick="resetPhoto()">ફોટો રીસેટ</button>
+      </div>
+      <input type="file" id="fileStudent" accept="image/*" hidden>
+    </div>
+
+    <div class="input-group">
+      <label>ફોટો ઝૂમ</label>
+      <div class="slider-row"><input type="range" id="rngZoom" min="1" max="3" step=".05" value="1"><span id="lblZoom">1.00x</span></div>
+    </div>
+    <div class="input-group">
+      <label>ફોટો ઉપર / નીચે (Y-Axis)</label>
+      <div class="slider-row"><input type="range" id="rngPosY" min="-150" max="150" step="1" value="0"><span id="lblPosY">0px</span></div>
+    </div>
+    <div class="input-group">
+      <label>ફોટો ડાબે / જમણે (X-Axis)</label>
+      <div class="slider-row"><input type="range" id="rngPosX" min="-150" max="150" step="1" value="0"><span id="lblPosX">0px</span></div>
+    </div>
+
+    <div class="section-title">સુવિચાર અને સન્માન પંક્તિ</div>
+    <div class="input-group" style="grid-column:1/-1">
+      <label>યાદીમાંથી પસંદ કરો અથવા નવો લખો</label>
+      <select id="selQuote"></select>
+      <input id="inpQuote" value="">
+    </div>
+  </div>
+
+  <div class="main-actions">
+    <button id="btnShare">WhatsApp / Share</button>
+    <button id="btnDownload">HD JPG</button>
+    <button id="btnDownloadPng">HD PNG</button>
+    <button id="btnPrint">Print / PDF</button>
+    <button id="btnSaveMeta">શાળા વિગતો સેવ</button>
+    <button id="btnReset">Reset</button>
+  </div>
+  <div class="toast-msg" id="toastMsg"></div>
+</div>
+
+<div class="poster-container">
+  <div class="poster-canvas" id="posterArea">
+
+    <!-- VECTOR BACKGROUND DESIGN -->
+    <svg class="bg-decor" viewBox="0 0 540 960" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <radialGradient id="sunburstGrad" cx="50%" cy="40%" r="60%">
+          <stop offset="0%" stop-color="#ffffff" stop-opacity="0.45"/>
+          <stop offset="50%" stop-color="#fef08a" stop-opacity="0.2"/>
+          <stop offset="100%" stop-color="#ca8a04" stop-opacity="0"/>
+        </radialGradient>
+      </defs>
+
+      <g fill="url(#sunburstGrad)">
+        <polygon points="270,380 0,0 45,0"/><polygon points="270,380 90,0 135,0"/>
+        <polygon points="270,380 180,0 225,0"/><polygon points="270,380 270,0 315,0"/>
+        <polygon points="270,380 360,0 405,0"/><polygon points="270,380 450,0 495,0"/>
+        <polygon points="270,380 540,0 540,45"/><polygon points="270,380 540,90 540,135"/>
+        <polygon points="270,380 540,180 540,225"/><polygon points="270,380 540,270 540,315"/>
+        <polygon points="270,380 540,360 540,405"/><polygon points="270,380 540,450 540,495"/>
+        <polygon points="270,380 540,540 540,585"/><polygon points="270,380 540,630 540,675"/>
+        <polygon points="270,380 540,720 540,765"/><polygon points="270,380 540,810 540,855"/>
+        <polygon points="270,380 540,900 500,960"/><polygon points="270,380 440,960 380,960"/>
+        <polygon points="270,380 320,960 260,960"/><polygon points="270,380 200,960 140,960"/>
+        <polygon points="270,380 80,960 20,960"/><polygon points="270,380 0,920 0,860"/>
+        <polygon points="270,380 0,800 0,740"/><polygon points="270,380 0,680 0,620"/>
+        <polygon points="270,380 0,560 0,500"/><polygon points="270,380 0,440 0,380"/>
+        <polygon points="270,380 0,320 0,260"/><polygon points="270,380 0,200 0,140"/>
+      </g>
+
+      <g opacity="0.3">
+        <circle cx="60" cy="180" r="38" fill="#ffffff"/><circle cx="480" cy="210" r="45" fill="#ffffff"/>
+        <circle cx="70" cy="460" r="28" fill="#ffffff"/><circle cx="475" cy="480" r="32" fill="#ffffff"/>
+        <circle cx="50" cy="710" r="40" fill="#ffffff"/><circle cx="490" cy="720" r="35" fill="#ffffff"/>
+      </g>
+
+      <g opacity="0.65">
+        <polygon points="45,280 48,288 57,288 50,293 52,301 45,296 38,301 40,293 33,288 42,288" fill="#d97706"/>
+        <polygon points="495,290 498,298 507,298 500,303 502,311 495,306 488,311 490,303 483,298 492,298" fill="#d97706"/>
+        <polygon points="80,580 83,588 92,588 85,593 87,601 80,596 73,601 75,593 68,588 77,588" fill="#ea580c"/>
+        <polygon points="460,580 463,588 472,588 465,593 467,601 460,596 453,601 455,593 448,588 457,588" fill="#ea580c"/>
+        <rect x="55" y="240" width="8" height="15" rx="3" transform="rotate(25 55 240)" fill="#16a34a"/>
+        <rect x="470" y="250" width="8" height="15" rx="3" transform="rotate(-35 470 250)" fill="#dc2626"/>
+        <circle cx="85" cy="220" r="4" fill="#dc2626"/><circle cx="450" cy="230" r="5" fill="#16a34a"/>
+        <circle cx="40" cy="350" r="4" fill="#ea580c"/><circle cx="505" cy="360" r="4.5" fill="#0284c7"/>
+      </g>
+    </svg>
+
+    <!-- 1. TOP SUVICHAR -->
+    <div class="top-suvichar" id="txtQuote">“ગુણોથી હવે પ્રગતિનો નાદ, જન્મદિવસનો સપ્રેમ આશીર્વાદ!”</div>
+
+    <!-- 2. SCHOOL BADGE -->
+    <div class="school-badge">
+      <div class="school-logo-slot" id="logoWrap">
+        <svg viewBox="0 0 24 24" width="28" height="28" fill="#d97706"><path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/></svg>
+      </div>
+      <div class="school-meta">
+        <div class="school-name" id="txtSchool">શ્રી પાનસડા અનુપમ પ્રાથમિક શાળા</div>
+        <div class="school-place" id="txtPlace">ગામ: પાનસડા | તા: ધરણીધર | જિ: વાવ-થરાદ</div>
+      </div>
+    </div>
+
+    <!-- 3. TITLE CLUSTER -->
+    <div class="title-cluster">
+      <div class="deepak-pill" id="txtMainTitle">આજનો દીપક</div>
+      <div class="shubhechha-ribbon" id="txtSubTitle">જન્મદિવસની હાર્દિક શુભેચ્છા</div>
+    </div>
+
+    <!-- 4. PHOTO FRAME -->
+    <div class="student-frame-box">
+      <canvas id="studentCanvas" width="700" height="700"></canvas>
+    </div>
+
+    <!-- 5. NAME PLATE -->
+    <div class="student-name-plate">
+      <h2 class="student-name" id="txtStudentName">રાજપુરા રસુલભાઈ સુલેમાનભાઈ</h2>
+      <div class="details-pill-row">
+        <span class="detail-chip" id="txtStandard">ધોરણ - ૮</span>
+        <span class="detail-chip" id="txtDob">તા. ૦૬/૦૯/૨૦૧૨, રવિવાર</span>
+      </div>
+    </div>
+
+    <!-- 6. 3D GOLDEN TEXT BARS / DONOR APPRECIATION STRIP -->
+    <div class="birthday-block" id="blockBirthday">
+      <div class="bday-bar" id="barTop">
+        <svg class="bday-svg-text" viewBox="0 0 380 40" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldTextGrad1" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="22%" stop-color="#fef08a"/>
+              <stop offset="50%" stop-color="#facc15"/>
+              <stop offset="78%" stop-color="#ca8a04"/>
+              <stop offset="100%" stop-color="#854d0e"/>
+            </linearGradient>
+            <filter id="textShadow1" x="-10%" y="-10%" width="120%" height="130%">
+              <feDropShadow dx="0" dy="2" stdDeviation="1.5" flood-color="#3b1302" flood-opacity="0.9"/>
+            </filter>
+          </defs>
+          <text id="svgTextTop" x="50%" y="28" text-anchor="middle"
+                font-family="'Noto Sans Gujarati', 'Montserrat', sans-serif" font-weight="900" font-size="26" letter-spacing="4"
+                fill="url(#goldTextGrad1)" stroke="#5c1d06" stroke-width="1.2" filter="url(#textShadow1)">
+            HAPPY
+          </text>
+        </svg>
+        <div class="donor-msg-text" id="txtDonorMsg">
+          શાળાના સમગ્ર પરિવાર અને સૌ વિદ્યાર્થીઓ તરફથી આપનો હૃદયપૂર્વક આભાર અને સાદર કૃતજ્ઞતા.
+        </div>
+      </div>
+
+      <div class="bday-bar" id="barBottom">
+        <svg class="bday-svg-text" viewBox="0 0 380 40" preserveAspectRatio="xMidYMid meet" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <linearGradient id="goldTextGrad2" x1="0%" y1="0%" x2="0%" y2="100%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="22%" stop-color="#fef08a"/>
+              <stop offset="50%" stop-color="#facc15"/>
+              <stop offset="78%" stop-color="#ca8a04"/>
+              <stop offset="100%" stop-color="#854d0e"/>
+            </linearGradient>
+            <filter id="textShadow2" x="-10%" y="-10%" width="120%" height="130%">
+              <feDropShadow dx="0" dy="2" stdDeviation="1.5" flood-color="#3b1302" flood-opacity="0.9"/>
+            </filter>
+          </defs>
+          <text id="svgTextBottom" x="50%" y="27" text-anchor="middle"
+                font-family="'Noto Sans Gujarati', 'Montserrat', sans-serif" font-weight="900" font-size="24" letter-spacing="4"
+                fill="url(#goldTextGrad2)" stroke="#5c1d06" stroke-width="1.2" filter="url(#textShadow2)">
+            BIRTHDAY
+          </text>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 7. CELEBRATION DECORATION: ROSES & (CAKE / ANNAPURNA KALASH) -->
+    <div class="celebration-row">
+      <!-- Left Royal Flower Bouquet -->
+      <div class="bouquet-cluster">
+        <svg viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="roseGradL1" cx="40%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#ff758c"/>
+              <stop offset="50%" stop-color="#e11d48"/>
+              <stop offset="100%" stop-color="#881337"/>
+            </radialGradient>
+            <radialGradient id="roseGradL2" cx="35%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#fca5a5"/>
+              <stop offset="45%" stop-color="#dc2626"/>
+              <stop offset="100%" stop-color="#7f1d1d"/>
+            </radialGradient>
+            <radialGradient id="goldFloraL" cx="30%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#fffbeb"/>
+              <stop offset="40%" stop-color="#facc15"/>
+              <stop offset="100%" stop-color="#b45309"/>
+            </radialGradient>
+            <linearGradient id="leafGradL" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4ade80"/>
+              <stop offset="60%" stop-color="#15803d"/>
+              <stop offset="100%" stop-color="#052e16"/>
+            </linearGradient>
+          </defs>
+          <path d="M10,95 Q15,40 58,48 Q40,85 10,95 Z" fill="url(#leafGradL)"/>
+          <path d="M25,105 Q45,35 85,55 Q60,95 25,105 Z" fill="url(#leafGradL)"/>
+          <g>
+            <circle cx="22" cy="42" r="5" fill="url(#goldFloraL)"/>
+            <circle cx="34" cy="30" r="4.5" fill="url(#goldFloraL)"/>
+            <circle cx="50" cy="22" r="6" fill="url(#goldFloraL)"/>
+            <circle cx="82" cy="32" r="5.5" fill="url(#goldFloraL)"/>
+          </g>
+          <g transform="translate(48,68)">
+            <ellipse cx="0" cy="0" rx="26" ry="24" fill="url(#roseGradL1)"/>
+            <path d="M-15,-8 C-18,8 18,12 15,-6 C10,-18 -12,-18 -15,-8 Z" fill="#be123c"/>
+            <circle cx="0" cy="-1" r="4.5" fill="#4c0519"/>
+          </g>
+          <g transform="translate(85,78)">
+            <ellipse cx="0" cy="0" rx="30" ry="27" fill="url(#roseGradL2)"/>
+            <path d="M-18,-10 C-22,10 22,14 18,-8 C12,-20 -14,-20 -18,-10 Z" fill="#b91c1c"/>
+            <circle cx="0" cy="-1" r="5" fill="#450a0a"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Center Decor: 1. Cake, 2. Trophy, 3. Annapurna Kalash -->
+      <div class="center-decor" id="decorCenter">
+        <!-- ૧. કેક (દીપક મોડ) -->
+        <svg id="svgCake" viewBox="0 0 160 145" xmlns="http://www.w3.org/2000/svg">
+          <ellipse cx="80" cy="132" rx="72" ry="10" fill="#b45309"/>
+          <ellipse cx="80" cy="130" rx="66" ry="8" fill="#fffbeb"/>
+          <g>
+            <path d="M22,95 L22,120 C22,130 138,130 138,120 L138,95 Z" fill="#78350f"/>
+            <ellipse cx="80" cy="95" rx="58" ry="11" fill="#9a3412"/>
+          </g>
+          <g>
+            <path d="M38,62 L38,84 C38,93 122,93 122,84 L122,62 Z" fill="#fff7ed"/>
+            <ellipse cx="80" cy="62" rx="42" ry="9" fill="#ffffff"/>
+            <circle cx="80" cy="61" r="5" fill="#991b1b"/>
+          </g>
+          <g>
+            <rect x="77" y="27" width="6" height="27" rx="3" fill="#ea580c"/>
+            <path d="M80,8 Q86,16 80,23 Q74,16 80,8 Z" fill="#facc15"/>
+          </g>
+        </svg>
+
+        <!-- ૨. ટ્રોફી / સ્ટાર (ગુલાબ મોડ) -->
+        <svg id="svgTrophy" viewBox="0 0 160 145" xmlns="http://www.w3.org/2000/svg" style="display:none">
+          <path d="M45,124 L115,124 L105,108 L55,108 Z" fill="#831843"/>
+          <rect x="52" y="124" width="56" height="12" rx="3" fill="#f472b6"/>
+          <g transform="translate(80, 52)">
+            <polygon points="0,-45 13,-14 45,-12 21,10 28,42 0,24 -28,42 -21,10 -45,-12 -13,-14"
+                     fill="#facc15" stroke="#9d174d" stroke-width="2"/>
+            <circle cx="0" cy="0" r="14" fill="#db2777"/>
+            <text x="0" y="5" font-family="'Noto Sans Gujarati', sans-serif" font-size="13" font-weight="900" fill="#fff" text-anchor="middle">★</text>
+          </g>
+        </svg>
+
+        <!-- ૩. પવિત્ર અન્નપૂર્ણા કળશ (દાતા સન્માન મોડ) -->
+        <svg id="svgKalash" viewBox="0 0 160 145" xmlns="http://www.w3.org/2000/svg" style="display:none">
+          <defs>
+            <radialGradient id="kalashGrad" cx="40%" cy="40%" r="65%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="25%" stop-color="#fef08a"/>
+              <stop offset="60%" stop-color="#f59e0b"/>
+              <stop offset="100%" stop-color="#78350f"/>
+            </radialGradient>
+            <radialGradient id="coconutGrad" cx="35%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#a16207"/>
+              <stop offset="60%" stop-color="#713f12"/>
+              <stop offset="100%" stop-color="#451a03"/>
+            </radialGradient>
+          </defs>
+          <ellipse cx="80" cy="132" rx="55" ry="9" fill="#78350f"/>
+          <ellipse cx="80" cy="130" rx="50" ry="7" fill="url(#kalashGrad)"/>
+          
+          <path d="M42,76 C32,95 38,125 80,126 C122,125 128,95 118,76 Z" fill="url(#kalashGrad)" stroke="#78350f" stroke-width="1.5"/>
+          <path d="M52,76 L108,76 L114,68 L46,68 Z" fill="url(#kalashGrad)" stroke="#78350f" stroke-width="1.5"/>
+          
+          <g transform="translate(80, 98) scale(0.9)">
+            <rect x="-32" y="-24" width="64" height="4.5" rx="2" fill="#dc2626" stroke="#facc15" stroke-width="0.8"/>
+            <path d="M-10,-10 L-10,0 L10,0 L10,10 M-10,-10 L-10,-6 M10,10 L10,6 M-10,10 L0,10 L0,-10 L10,-10 M-10,10 L-6,10 M10,-10 L6,-10" 
+                  stroke="#dc2626" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+            <circle cx="-5" cy="-5" r="1.3" fill="#dc2626"/>
+            <circle cx="5" cy="-5" r="1.3" fill="#dc2626"/>
+            <circle cx="-5" cy="5" r="1.3" fill="#dc2626"/>
+            <circle cx="5" cy="5" r="1.3" fill="#dc2626"/>
+          </g>
+
+          <path d="M80,68 C70,40 50,42 42,50 C54,64 70,68 80,68 Z" fill="#15803d" stroke="#facc15" stroke-width="0.8"/>
+          <path d="M80,68 C90,40 110,42 118,50 C106,64 90,68 80,68 Z" fill="#15803d" stroke="#facc15" stroke-width="0.8"/>
+          <path d="M80,68 C72,32 58,26 52,34 C64,52 74,65 80,68 Z" fill="#16a34a" stroke="#facc15" stroke-width="0.8"/>
+          <path d="M80,68 C88,32 102,26 108,34 C96,52 86,65 80,68 Z" fill="#16a34a" stroke="#facc15" stroke-width="0.8"/>
+          <path d="M80,68 C74,25 80,18 80,16 C80,18 86,25 80,68 Z" fill="#22c55e" stroke="#facc15" stroke-width="0.8"/>
+
+          <g>
+            <ellipse cx="80" cy="46" rx="20" ry="24" fill="url(#coconutGrad)" stroke="#451a03" stroke-width="1.2"/>
+            <ellipse cx="80" cy="40" rx="3.5" ry="9" fill="#dc2626"/>
+            <ellipse cx="80" cy="38" rx="1.5" ry="5" fill="#fef08a"/>
+          </g>
+        </svg>
+      </div>
+
+      <!-- Right Royal Flower Bouquet -->
+      <div class="bouquet-cluster right">
+        <svg viewBox="0 0 150 120" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <radialGradient id="roseGradR1" cx="40%" cy="40%" r="60%">
+              <stop offset="0%" stop-color="#ff758c"/><stop offset="50%" stop-color="#e11d48"/><stop offset="100%" stop-color="#881337"/>
+            </radialGradient>
+            <radialGradient id="roseGradR2" cx="35%" cy="35%" r="65%">
+              <stop offset="0%" stop-color="#fca5a5"/><stop offset="45%" stop-color="#dc2626"/><stop offset="100%" stop-color="#7f1d1d"/>
+            </radialGradient>
+            <radialGradient id="goldFloraR" cx="30%" cy="30%" r="70%">
+              <stop offset="0%" stop-color="#fffbeb"/><stop offset="40%" stop-color="#facc15"/><stop offset="100%" stop-color="#b45309"/>
+            </radialGradient>
+            <linearGradient id="leafGradR" x1="0%" y1="0%" x2="100%" y2="100%">
+              <stop offset="0%" stop-color="#4ade80"/><stop offset="60%" stop-color="#15803d"/><stop offset="100%" stop-color="#052e16"/>
+            </linearGradient>
+          </defs>
+          <path d="M10,95 Q15,40 58,48 Q40,85 10,95 Z" fill="url(#leafGradR)"/>
+          <path d="M25,105 Q45,35 85,55 Q60,95 25,105 Z" fill="url(#leafGradL)"/>
+          <g>
+            <circle cx="22" cy="42" r="5" fill="url(#goldFloraR)"/>
+            <circle cx="34" cy="30" r="4.5" fill="url(#goldFloraR)"/>
+            <circle cx="50" cy="22" r="6" fill="url(#goldFloraR)"/>
+            <circle cx="82" cy="32" r="5.5" fill="url(#goldFloraR)"/>
+          </g>
+          <g transform="translate(48,68)">
+            <ellipse cx="0" cy="0" rx="26" ry="24" fill="url(#roseGradR1)"/>
+            <path d="M-15,-8 C-18,8 18,12 15,-6 C10,-18 -12,-18 -15,-8 Z" fill="#be123c"/>
+            <circle cx="0" cy="-1" r="4.5" fill="#4c0519"/>
+          </g>
+          <g transform="translate(85,78)">
+            <ellipse cx="0" cy="0" rx="30" ry="27" fill="url(#roseGradR2)"/>
+            <path d="M-18,-10 C-22,10 22,14 18,-8 C12,-20 -14,-20 -18,-10 Z" fill="#b91c1c"/>
+            <circle cx="0" cy="-1" r="5" fill="#450a0a"/>
+          </g>
+        </svg>
+      </div>
+    </div>
+
+    <!-- 8. BOTTOM SLOGAN -->
+    <div class="bottom-slogan-bar" id="txtBottomSlogan">શિક્ષિત બાળક • સમૃદ્ધ સમાજ • ઉજ્જવળ ભારત</div>
+
+  </div>
+</div>
+
+<!-- LIVE CAMERA MODAL -->
+<div class="modal-overlay" id="camModal">
+  <div class="camera-box">
+    <div class="camera-header">
+      <span>લાઈવ ફોટો કેમેરા</span>
+      <span onclick="closeCamera()" style="cursor:pointer;font-size:18px;padding:2px 8px">✖</span>
+    </div>
+    <div class="camera-viewport">
+      <video id="cameraStream" autoplay playsinline muted></video>
+      <div class="camera-guide"></div>
+    </div>
+    <div class="camera-actions">
+      <button onclick="closeCamera()" style="flex:1;padding:9px;border:0;border-radius:7px;background:#e2e8f0;font-weight:900;cursor:pointer">રદ</button>
+      <button onclick="toggleCameraMode()" style="flex:1;padding:9px;border:0;border-radius:7px;background:#0284c7;color:#fff;font-weight:900;cursor:pointer">કેમેરા બદલો (🔄)</button>
+      <button onclick="takeSnapshot()" style="flex:1;padding:9px;border:0;border-radius:7px;background:#16a34a;color:#fff;font-weight:900;cursor:pointer">ફોટો લો (📸)</button>
+    </div>
+  </div>
+</div>
+
+<script>
+const $ = id => document.getElementById(id);
+
+const quotesDeepak = [
+  "“ગુણોથી હવે પ્રગતિનો નાદ, જન્મદિવસનો સપ્રેમ આશીર્વાદ!”",
+  "“સંસ્કાર, શિક્ષણ અને સદ્દગુણ સાથે જીવનપથ પર સદાય આગળ વધો.”",
+  "“જ્ઞાનનો દીપક સદા પ્રજ્વલિત રહે, જીવનમાં સફળતા કદમ ચૂમે.”",
+  "“શિક્ષણના તેજથી તમારું અને શાળાનું નામ રોશન કરો.”"
+];
+
+const quotesGulab = [
+  "“સુઘડતા એ જ સાચી શોભા, સ્વચ્છતા એ જ જીવનના ઉત્તમ સંસ્કાર.”",
+  "“ખીલેલા ગુલાબ જેવી તાજગી અને સ્વચ્છ ગણવેશ સાથે શાળાની શોભા વધારતું બાળક.”",
+  "“સ્વચ્છ વસ્ત્રો, તેજસ્વી મન અને ઉત્તમ સંસ્કાર — બાળકના વ્યક્તિત્વનો શણગાર.”",
+  "“નિયમિતતા, શિસ્ત અને સુઘડતા થકી સફળતા તરફ ડગ માંડતું આપણું બાળક.”"
+];
+
+const quotesDonor = [
+  "“અન્નદાન એ જ મહાદાન, આપના સ્નેહ અને સહયોગ બદલ શાળા પરિવાર આપનો ઋણી રહેશે.”",
+  "“બાળકોના ચહેરા પર સ્મિત રેલાવનાર દાતાશ્રીને શાળા પરિવાર તરફથી કોટિ કોટિ વંદન.”",
+  "“આપની ઉદારતા અને સેવાભાવ સદાય પ્રેરણારૂપ બની રહે તેવી અભ્યર્થના.”",
+  "“શિક્ષણ અને પોષણના આ યજ્ઞમાં સહભાગી બનવા બદલ આપનો હૃદયપૂર્વક આભાર.”"
+];
+
+let currentMode = 'deepak';
+
+const inpSchool=$('inpSchool'), inpPlace=$('inpPlace'), inpStudentName=$('inpStudentName'), inpStandard=$('inpStandard'), inpDob=$('inpDob');
+const selQuote=$('selQuote'), inpQuote=$('inpQuote');
+const txtSchool=$('txtSchool'), txtPlace=$('txtPlace'), txtStudentName=$('txtStudentName'), txtStandard=$('txtStandard'), txtDob=$('txtDob'), txtQuote=$('txtQuote');
+const txtMainTitle=$('txtMainTitle'), txtSubTitle=$('txtSubTitle'), txtBottomSlogan=$('txtBottomSlogan');
+const svgTextTop=$('svgTextTop'), svgTextBottom=$('svgTextBottom');
+const rngZoom=$('rngZoom'), rngPosY=$('rngPosY'), rngPosX=$('rngPosX'), lblZoom=$('lblZoom'), lblPosY=$('lblPosY'), lblPosX=$('lblPosX');
+const canvas=$('studentCanvas'), ctx=canvas.getContext('2d'), toast=$('toastMsg');
+let currentImg=null, mediaStream=null, facingMode='environment';
+
+function showToast(t){toast.textContent=t;clearTimeout(showToast.t);showToast.t=setTimeout(()=>toast.textContent='',3000)}
+
+function getTodayGujaratiDate(){
+  const days = ['રવિવાર', 'સોમવાર', 'મંગળવાર', 'બુધવાર', 'ગુરુવાર', 'શુક્રવાર', 'શનિવાર'];
+  const now = new Date();
+  const pad = n => String(n).padStart(2, '0');
+  const d = pad(now.getDate());
+  const m = pad(now.getMonth() + 1);
+  const y = now.getFullYear();
+  const dayName = days[now.getDay()];
+  const engStr = `તા. ${d}/${m}/${y}, ${dayName}`;
+  const gujDigits = {'0':'૦','1':'૧','2':'૨','3':'૩','4':'૪','5':'૫','6':'૬','7':'૭','8':'૮','9':'૯'};
+  return engStr.replace(/[0-9]/g, ch => gujDigits[ch]);
+}
+
+function updateQuoteDropdown(quotes){
+  selQuote.innerHTML = '';
+  quotes.forEach(q => {
+    const opt = document.createElement('option');
+    opt.value = q;
+    opt.textContent = q;
+    selQuote.appendChild(opt);
+  });
+  inpQuote.value = quotes[0];
+  txtQuote.textContent = quotes[0];
+}
+
+function switchMode(mode){
+  currentMode = mode;
+  document.body.className = '';
+
+  if(mode === 'deepak'){
+    $('btnModeDeepak').className = 'mode-btn active-deepak';
+    $('btnModeGulab').className = 'mode-btn';
+    $('btnModeDonor').className = 'mode-btn';
+
+    $('secPersonTitle').textContent = "વિદ્યાર્થી વિગતો";
+    $('lblNameInput').textContent = "વિદ્યાર્થીનું પૂરું નામ";
+    $('lblSubInput').textContent = "ધોરણ અને વર્ગ";
+    $('lblDateInput').textContent = "જન્મ તારીખ અને વાર";
+    $('lblPhotoInput').textContent = "વિદ્યાર્થીનો ફોટો";
+
+    txtMainTitle.textContent = "આજનો દીપક";
+    txtSubTitle.style.display = 'block';
+    txtSubTitle.textContent = "જન્મદિવસની હાર્દિક શુભેચ્છા";
+    
+    inpStudentName.value = "રાજપુરા રસુલભાઈ સુલેમાનભાઈ";
+    txtStudentName.textContent = inpStudentName.value;
+    inpStandard.value = "ધોરણ - ૮";
+    txtStandard.textContent = inpStandard.value;
+    inpDob.value = "તા. ૦૬/૦૯/૨૦૧૨, રવિવાર";
+    txtDob.textContent = inpDob.value;
+
+    $('barTop').style.display = 'flex';
+    $('barBottom').style.display = 'flex';
+    svgTextTop.textContent = "HAPPY";
+    svgTextBottom.textContent = "BIRTHDAY";
+
+    $('svgCake').style.display = 'block';
+    $('svgTrophy').style.display = 'none';
+    $('svgKalash').style.display = 'none';
+
+    txtBottomSlogan.textContent = "શિક્ષિત બાળક • સમૃદ્ધ સમાજ • ઉજ્જવળ ભારત";
+    updateQuoteDropdown(quotesDeepak);
+    showToast('મોડ: આજનો દીપક સક્રિય થયો');
+  } 
+  else if(mode === 'gulab'){
+    document.body.classList.add('mode-gulab');
+    $('btnModeDeepak').className = 'mode-btn';
+    $('btnModeGulab').className = 'mode-btn active-gulab';
+    $('btnModeDonor').className = 'mode-btn';
+
+    $('secPersonTitle').textContent = "વિદ્યાર્થી વિગતો";
+    $('lblNameInput').textContent = "વિદ્યાર્થીનું પૂરું નામ";
+    $('lblSubInput').textContent = "ધોરણ અને વર્ગ";
+    $('lblDateInput').textContent = "આજની તારીખ અને વાર";
+    $('lblPhotoInput').textContent = "વિદ્યાર્થીનો ફોટો";
+
+    txtMainTitle.textContent = "આજનું ગુલાબ";
+    txtSubTitle.style.display = 'none';
+    
+    inpStudentName.value = "રાજપુરા રસુલભાઈ સુલેમાનભાઈ";
+    txtStudentName.textContent = inpStudentName.value;
+    inpStandard.value = "ધોરણ - ૮";
+    txtStandard.textContent = inpStandard.value;
+    const today = getTodayGujaratiDate();
+    inpDob.value = today;
+    txtDob.textContent = today;
+
+    $('barTop').style.display = 'flex';
+    $('barBottom').style.display = 'flex';
+    svgTextTop.textContent = "STAR OF";
+    svgTextBottom.textContent = "THE DAY";
+
+    $('svgCake').style.display = 'none';
+    $('svgTrophy').style.display = 'block';
+    $('svgKalash').style.display = 'none';
+
+    txtBottomSlogan.textContent = "સ્વચ્છતા ત્યાં પ્રભુતા • સુઘડ બાળક, શાળાની શોભા";
+    updateQuoteDropdown(quotesGulab);
+    showToast('મોડ: આજનું ગુલાબ સક્રિય થયો');
+  }
+  else if(mode === 'donor'){
+    document.body.classList.add('mode-donor');
+    $('btnModeDeepak').className = 'mode-btn';
+    $('btnModeGulab').className = 'mode-btn';
+    $('btnModeDonor').className = 'mode-btn active-donor';
+
+    $('secPersonTitle').textContent = "દાતાશ્રીની વિગતો";
+    $('lblNameInput').textContent = "દાતાશ્રીનું પૂરું નામ";
+    $('lblSubInput').textContent = "આપેલ વાનગી / નિવાસસ્થાન";
+    $('lblDateInput').textContent = "તિથિ ભોજન તારીખ";
+    $('lblPhotoInput').textContent = "દાતાશ્રીનો ફોટો";
+
+    txtMainTitle.textContent = "તિથિ ભોજન દાતાશ્રી";
+    txtSubTitle.style.display = 'block';
+    txtSubTitle.textContent = "હાર્દિક આભાર";
+
+    inpStudentName.value = "રાજપુરા રસુલભાઈ સુલેમાનભાઈ";
+    txtStudentName.textContent = inpStudentName.value;
+    inpStandard.value = "વાનગી: લાડુ, દાળ-ભાત";
+    txtStandard.textContent = inpStandard.value;
+    const today = getTodayGujaratiDate();
+    inpDob.value = today;
+    txtDob.textContent = today;
+
+    $('barTop').style.display = 'flex';
+    $('barBottom').style.display = 'none';
+
+    $('svgCake').style.display = 'none';
+    $('svgTrophy').style.display = 'none';
+    $('svgKalash').style.display = 'block';
+
+    txtBottomSlogan.textContent = "દાતાશ્રીના સહયોગથી શાળા સમૃદ્ધ બને છે • આપનો ખૂબ ખૂબ આભાર";
+    updateQuoteDropdown(quotesDonor);
+    showToast('મોડ: તિથિ ભોજન દાતા સન્માન સક્રિય થયો');
+  }
+}
+
+function placeholder(){
+  ctx.clearRect(0,0,canvas.width,canvas.height);
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(350,350,350,0,Math.PI*2);
+  ctx.clip();
+  ctx.fillStyle='#f1f5f9';
+  ctx.fillRect(0,0,700,700);
+  ctx.fillStyle='#94a3b8';
+  ctx.textAlign='center';
+  ctx.textBaseline='middle';
+  ctx.font="900 34px 'Noto Sans Gujarati'";
+  ctx.fillText('ફોટો અપલોડ કરો',350,350);
+  ctx.restore();
+}
+placeholder();
+
+function renderPhoto(){
+  if(!currentImg) return;
+  const W=canvas.width, H=canvas.height;
+  ctx.clearRect(0,0,W,H);
+  ctx.save();
+  ctx.beginPath();
+  ctx.arc(W/2,H/2,W/2,0,Math.PI*2);
+  ctx.clip();
+  const zoom = parseFloat(rngZoom.value);
+  const offY = parseFloat(rngPosY.value);
+  const offX = parseFloat(rngPosX.value);
+  const minDim = Math.min(currentImg.width, currentImg.height) / zoom;
+  let sx = (currentImg.width - minDim)/2 + offX * (currentImg.width/700);
+  let sy = (currentImg.height - minDim)/2 + offY * (currentImg.height/700);
+  sx = Math.max(0, Math.min(currentImg.width - minDim, sx));
+  sy = Math.max(0, Math.min(currentImg.height - minDim, sy));
+  ctx.drawImage(currentImg, sx, sy, minDim, minDim, 0, 0, W, H);
+  ctx.restore();
+}
+
+function loadPhotoSource(src){
+  const img = new Image();
+  img.onload = () => {
+    currentImg = img;
+    rngZoom.value = 1; rngPosY.value = 0; rngPosX.value = 0;
+    lblZoom.textContent = '1.00x'; lblPosY.textContent = '0px'; lblPosX.textContent = '0px';
+    renderPhoto();
+    showToast('ફોટો સેટ થયો');
+  };
+  img.src = src;
+}
+
+function resetPhoto(){
+  currentImg = null;
+  placeholder();
+  rngZoom.value = 1; rngPosY.value = 0; rngPosX.value = 0;
+  lblZoom.textContent = '1.00x'; lblPosY.textContent = '0px'; lblPosX.textContent = '0px';
+  showToast('ફોટો રીસેટ થયો');
+}
+
+rngZoom.oninput = () => { lblZoom.textContent = parseFloat(rngZoom.value).toFixed(2)+'x'; renderPhoto(); };
+rngPosY.oninput = () => { lblPosY.textContent = rngPosY.value+'px'; renderPhoto(); };
+rngPosX.oninput = () => { lblPosX.textContent = rngPosX.value+'px'; renderPhoto(); };
+
+$('fileStudent').onchange = e => {
+  const f = e.target.files[0];
+  if(f){
+    const r = new FileReader();
+    r.onload = x => loadPhotoSource(x.target.result);
+    r.readAsDataURL(f);
+  }
+  e.target.value = '';
+};
+
+/* CAMERA FUNCTIONS */
+async function startCamera(){
+  if(mediaStream){
+    mediaStream.getTracks().forEach(track => track.stop());
+  }
+  try{
+    mediaStream = await navigator.mediaDevices.getUserMedia({
+      video: {
+        facingMode: { ideal: facingMode },
+        width: { ideal: 1280 },
+        height: { ideal: 1280 }
+      },
+      audio: false
+    });
+    $('cameraStream').srcObject = mediaStream;
+  }catch(err){
+    alert('કેમેરા શરૂ થઈ શક્યો નથી. Browser permission અને HTTPS ચકાસો.');
+  }
+}
+
+async function launchCamera(){
+  $('camModal').style.display = 'flex';
+  await startCamera();
+}
+
+function toggleCameraMode(){
+  facingMode = (facingMode === 'environment') ? 'user' : 'environment';
+  startCamera();
+}
+
+function closeCamera(){
+  if(mediaStream){
+    mediaStream.getTracks().forEach(track => track.stop());
+    mediaStream = null;
+  }
+  $('camModal').style.display = 'none';
+}
+
+function takeSnapshot(){
+  const video = $('cameraStream');
+  if(!video.videoWidth) return;
+  const tempCanvas = document.createElement('canvas');
+  const dim = Math.min(video.videoWidth, video.videoHeight);
+  tempCanvas.width = dim;
+  tempCanvas.height = dim;
+  const tCtx = tempCanvas.getContext('2d');
+  const sx = (video.videoWidth - dim) / 2;
+  const sy = (video.videoHeight - dim) / 2;
+  tCtx.drawImage(video, sx, sy, dim, dim, 0, 0, dim, dim);
+  loadPhotoSource(tempCanvas.toDataURL('image/jpeg', 0.95));
+  closeCamera();
+}
+
+$('fileLogo').onchange = e => {
+  const f = e.target.files[0];
+  if(f){
+    const r = new FileReader();
+    r.onload = x => {
+      setLogoImage(x.target.result);
+      localStorage.setItem('cached_school_logo', x.target.result);
+      showToast('લોગો સેટ થયો');
+    };
+    r.readAsDataURL(f);
+  }
+  e.target.value = '';
+};
+
+function setLogoImage(src){
+  const img = document.createElement('img');
+  img.src = src;
+  img.alt = 'Logo';
+  $('logoWrap').innerHTML = '';
+  $('logoWrap').appendChild(img);
+}
+
+function clearSchoolLogo(){
+  $('logoWrap').innerHTML = '<svg viewBox="0 0 24 24" width="28" height="28" fill="#d97706"><path d="M12 3L1 9L12 15L21 10.09V17H23V9M5 13.18V17.18L12 21L19 17.18V13.18L12 17L5 13.18Z"/></svg>';
+  localStorage.removeItem('cached_school_logo');
+  showToast('લોગો રીમુવ થયો');
+}
+
+function bind(input, output, fallback){
+  input.oninput = () => output.textContent = input.value || fallback;
+}
+bind(inpSchool, txtSchool, 'શાળાનું નામ');
+bind(inpPlace, txtPlace, 'સ્થળ');
+bind(inpStudentName, txtStudentName, 'નામ');
+bind(inpStandard, txtStandard, 'વિગત');
+bind(inpDob, txtDob, 'તારીખ');
+
+selQuote.onchange = () => { inpQuote.value = selQuote.value; txtQuote.textContent = selQuote.value; };
+inpQuote.oninput = () => txtQuote.textContent = inpQuote.value;
+
+$('btnSaveMeta').onclick = () => {
+  localStorage.setItem('cached_school_name', inpSchool.value.trim());
+  localStorage.setItem('cached_school_place', inpPlace.value.trim());
+  showToast('શાળાની વિગતો સેવ થઈ ગઈ');
+};
+
+function loadCached(){
+  const n = localStorage.getItem('cached_school_name');
+  const p = localStorage.getItem('cached_school_place');
+  const l = localStorage.getItem('cached_school_logo');
+  if(n){ inpSchool.value = n; txtSchool.textContent = n; }
+  if(p){ inpPlace.value = p; txtPlace.textContent = p; }
+  if(l){ setLogoImage(l); }
+}
+
+async function makeCanvas(){
+  await document.fonts.ready;
+  return await html2canvas($('posterArea'), { scale: 3, useCORS: true, logging: false });
+}
+
+function cleanName(){
+  let prefix = 'Birthday_';
+  if(currentMode === 'gulab') prefix = 'Gulab_';
+  if(currentMode === 'donor') prefix = 'Donor_';
+  return prefix + (inpStudentName.value.trim() || 'Person').replace(/[^\p{L}\p{N}\s_-]/gu, '').trim().replace(/\s+/g, '_');
+}
+
+$('btnDownload').onclick = async () => {
+  try{
+    showToast('HD JPG તૈયાર થઈ રહી છે...');
+    const c = await makeCanvas();
+    const a = document.createElement('a');
+    a.download = cleanName() + '.jpg';
+    a.href = c.toDataURL('image/jpeg', 0.95);
+    a.click();
+    showToast('ડાઉનલોડ સફળ');
+  }catch(e){ alert('Export error: ' + e); }
+};
+
+$('btnDownloadPng').onclick = async () => {
+  try{
+    showToast('HD PNG તૈયાર થઈ રહી છે...');
+    const c = await makeCanvas();
+    const a = document.createElement('a');
+    a.download = cleanName() + '.png';
+    a.href = c.toDataURL('image/png');
+    a.click();
+    showToast('ડાઉનલોડ સફળ');
+  }catch(e){ alert('Export error: ' + e); }
+};
+
+$('btnPrint').onclick = () => window.print();
+
+$('btnShare').onclick = async () => {
+  try{
+    showToast('Share તૈયાર થઈ રહ્યું છે...');
+    const c = await makeCanvas();
+    c.toBlob(async blob => {
+      const fileName = cleanName() + '.jpg';
+      const file = new File([blob], fileName, { type: 'image/jpeg' });
+      
+      let shareTitle = 'શાળા સન્માન પત્ર';
+      let shareMsg = '';
+      if(currentMode === 'deepak'){
+        shareTitle = 'જન્મદિવસની હાર્દિક શુભેચ્છા';
+        shareMsg = `${inpSchool.value} તરફથી ${inpStudentName.value} ને જન્મદિવસની ખૂબ ખૂબ શુભેચ્છાઓ!`;
+      } else if(currentMode === 'gulab'){
+        shareTitle = 'આજનું ગુલાબ સન્માન';
+        shareMsg = `${inpSchool.value} તરફથી ${inpStudentName.value} (${inpStandard.value}) ને "આજનું ગુલાબ" સન્માન બદલ ખૂબ ખૂબ અભિનંદન!`;
+      } else {
+        shareTitle = 'તિથિ ભોજન દાતાશ્રી સન્માન';
+        shareMsg = `${inpSchool.value} માં તિથિ ભોજન આપવા બદલ દાતાશ્રી ${inpStudentName.value} (${inpStandard.value}) નો શાળા પરિવાર અને વિદ્યાર્થીઓ તરફથી હૃદયપૂર્વક આભાર!`;
+      }
+
+      if(navigator.canShare && navigator.canShare({ files: [file] })){
+        try{
+          await navigator.share({ files: [file], title: shareTitle, text: shareMsg });
+          return;
+        }catch(e){}
+      }
+      const url = URL.createObjectURL(blob);
+      const a = document.createElement('a');
+      a.download = fileName;
+      a.href = url;
+      a.click();
+      URL.revokeObjectURL(url);
+      window.open('https://api.whatsapp.com/send?text=' + encodeURIComponent(shareMsg), '_blank');
+    }, 'image/jpeg', 0.95);
+  }catch(e){ alert('Share error: ' + e); }
+};
+
+$('btnReset').onclick = () => {
+  if(!confirm('બધી વિગતો reset કરવી છે?')) return;
+  inpStudentName.value = ''; inpStandard.value = '';
+  txtStudentName.textContent = 'નામ'; txtStandard.textContent = 'વિગત';
+  if(currentMode === 'deepak'){
+    inpDob.value = '';
+    txtDob.textContent = 'જન્મ તારીખ';
+  } else {
+    inpDob.value = getTodayGujaratiDate();
+    txtDob.textContent = inpDob.value;
+  }
+  resetPhoto();
+};
+
+loadCached();
+switchMode('deepak');
+</script>
+</body>
+</html>
